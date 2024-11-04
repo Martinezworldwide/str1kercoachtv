@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Str1ker Coach TV</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main Background and Page Layout */
+        body {
+            background-color: #1a1a2e;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #f5a623;
+            letter-spacing: 2px;
+        }
+        header p {
+            color: #ddd;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Button Grid */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .iframe-button {
+            background-color: #f5a623;
+            color: #1a1a2e;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .iframe-button:hover {
+            background-color: #ffd166;
+        }
+
+        /* Modal Container */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+
+        .modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #2e2e3d;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 800px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f5a623;
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #1a1a2e;
+        }
+        .close-button {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .modal-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Str1ker Coach TV</h1>
+        <p>Your ultimate soccer coaching resource - watch, learn, and elevate your game!</p>
+    </header>
+
+    <!-- Button Section -->
+    <div class="button-container">
+        <button class="iframe-button" onclick="openModal('https://engineeredsystems.wixsite.com/events')">Events</button>
+        <button class="iframe-button" onclick="openModal('https://engineeredsystems.wixsite.com/essentials')">Essentials</button>
+        <button class="iframe-button" onclick="openModal('https://engineeredsystems.wixsite.com/music')">Music</button>
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <!-- Modal for iFrames -->
+    <div id="iframeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Iframe Content</h2>
+                <button class="close-button" onclick="closeModal()">&times;</button>
+            </div>
+            <iframe id="modalIframe" class="modal-iframe"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Str1ker Coach TV. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Function to open modal with specific iframe URL
+        function openModal(url) {
+            document.getElementById('modalIframe').src = url;
+            document.getElementById('iframeModal').classList.add('active');
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('iframeModal').classList.remove('active');
+            document.getElementById('modalIframe').src = ''; // Clear the src to stop loading
+        }
+    </script>
+
+</body>
+</html>
