@@ -21,6 +21,7 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scrolling on desktop */
         }
 
         /* Header */
@@ -94,35 +95,43 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            position: relative; /* Allow absolute positioning of header */
         }
+
+        /* Modal Header */
         .modal-header {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
             background-color: #f5a623;
+            padding: 10px;
+            border-radius: 8px;
+            color: #1a1a2e;
+            z-index: 10;
         }
         .modal-header h2 {
             margin: 0;
             font-size: 1.2rem;
-            color: #1a1a2e;
         }
         .close-button {
             font-size: 1.5rem;
-            color: #1a1a2e;
             cursor: pointer;
             border: none;
             background: none;
         }
 
-        /* Adjusted iframe for optimal fit */
+        /* Scaled iframe for optimal fit */
         .modal-iframe {
             width: 117.6%; /* Adjust width to fit within scale */
             height: 117.6%; /* Adjust height to fit within scale */
             transform: scale(0.85); /* Scale up to fill the modal content area */
             transform-origin: top left;
             border: none;
-            overflow: hidden;
+            overflow-y: auto; /* Allow only vertical scrolling */
         }
 
         /* Footer */
@@ -130,6 +139,17 @@
             margin-top: 30px;
             font-size: 0.9rem;
             color: #bbb;
+        }
+
+        /* Mobile adjustment for modal position */
+        @media (max-width: 768px) {
+            .modal-content {
+                height: 80%; /* Reduce height on mobile */
+                margin-top: 15%; /* Move modal lower */
+            }
+            .modal-iframe {
+                height: 90%; /* Adjust iframe height */
+            }
         }
     </style>
 </head>
@@ -182,6 +202,3 @@
 </body>
 </html>
 
-
-</body>
-</html>
