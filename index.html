@@ -73,7 +73,8 @@
             background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Align modal to start vertically */
+            padding-top: 50px; /* Push modal lower to avoid Instagram UI */
             visibility: hidden;
             opacity: 0;
             transition: visibility 0s, opacity 0.3s ease;
@@ -91,37 +92,18 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             width: 90%;
             max-width: 800px;
-            height: 600px; /* Set height to accommodate content */
+            height: 80vh; /* Taller height on desktop */
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            position: relative; /* Allow absolute positioning of header */
         }
 
-        /* Modal Header */
-        .modal-header {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f5a623;
-            padding: 10px;
-            border-radius: 8px;
-            color: #1a1a2e;
-            z-index: 10;
-        }
-        .modal-header h2 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-        .close-button {
+        /* Title for iframe modal */
+        .iframe-title {
             font-size: 1.5rem;
-            cursor: pointer;
-            border: none;
-            background: none;
+            color: #f5a623;
+            text-align: center;
+            margin: 10px 0;
         }
 
         /* Scaled iframe for optimal fit */
@@ -136,19 +118,22 @@
 
         /* Footer */
         footer {
-            margin-top: 30px;
+            margin-top: 10px;
             font-size: 0.9rem;
             color: #bbb;
         }
 
-        /* Mobile adjustment for modal position */
+        /* Mobile adjustment for modal layout */
         @media (max-width: 768px) {
             .modal-content {
-                height: 80%; /* Reduce height on mobile */
-                margin-top: 15%; /* Move modal lower */
+                width: 95%; /* Wider on mobile */
+                height: 90vh; /* Long vertical layout on mobile */
             }
-            .modal-iframe {
-                height: 90%; /* Adjust iframe height */
+            .modal {
+                padding-top: 80px; /* Further offset for Instagram */
+            }
+            footer {
+                margin-top: 5px; /* Reduce footer space */
             }
         }
     </style>
@@ -171,11 +156,8 @@
 
     <!-- Modal for iFrames -->
     <div id="iframeModal" class="modal">
+        <div class="iframe-title">Iframe Content</div>
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Iframe Content</h2>
-                <button class="close-button" onclick="closeModal()">&times;</button>
-            </div>
             <iframe id="modalIframe" class="modal-iframe"></iframe>
         </div>
     </div>
@@ -201,4 +183,3 @@
 
 </body>
 </html>
-
