@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soccer Player Dribbling Animation</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: transparent; /* Transparent body background */
+  }
+
+  #field {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: transparent; /* Transparent field background */
+  }
+
+  /* Soccer Player */
+  .player {
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: runAcross 5s linear infinite;
+    transform: translateY(-50%);
+  }
+
+  /* Head */
+  .head {
+    width: 15px;
+    height: 15px;
+    background-color: white; /* White head */
+    border-radius: 50%;
+  }
+
+  /* Body */
+  .body {
+    width: 5px;
+    height: 30px;
+    background-color: white; /* White body */
+    position: relative;
+  }
+
+  /* Arms */
+  .arm-left, .arm-right {
+    width: 20px;
+    height: 5px;
+    background-color: white; /* White arms */
+    position: absolute;
+    top: 5px;
+  }
+  .arm-left {
+    transform: rotate(45deg);
+    left: -15px;
+    animation: armMove 0.5s alternate infinite;
+  }
+  .arm-right {
+    transform: rotate(-45deg);
+    right: -15px;
+    animation: armMove 0.5s alternate-reverse infinite;
+  }
+
+  /* Legs */
+  .leg-left, .leg-right {
+    width: 5px;
+    height: 20px;
+    background-color: white; /* White legs */
+    position: absolute;
+    bottom: -20px;
+  }
+  .leg-left {
+    left: -5px;
+    animation: legMove 0.5s alternate infinite;
+  }
+  .leg-right {
+    right: -5px;
+    animation: legMove 0.5s alternate-reverse infinite;
+  }
+
+  /* Soccer Ball */
+  .ball {
+    position: absolute;
+    top: 60%;
+    left: -90px;
+    width: 15px;
+    height: 15px;
+    background-color: white; /* White ball */
+    border: 2px solid black;
+    border-radius: 50%;
+    animation: ballDribble 0.3s ease-in-out infinite, runAcross 5s linear infinite;
+  }
+
+  /* Animations */
+  @keyframes runAcross {
+    0% { left: -100px; }
+    100% { left: 100%; }
+  }
+
+  @keyframes armMove {
+    0% { transform: rotate(45deg); }
+    100% { transform: rotate(25deg); }
+  }
+
+  @keyframes legMove {
+    0% { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
+  }
+
+  @keyframes ballDribble {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div id="field">
+  <div class="player">
+    <div class="head"></div>
+    <div class="body">
+      <div class="arm-left"></div>
+      <div class="arm-right"></div>
+      <div class="leg-left"></div>
+      <div class="leg-right"></div>
+    </div>
+  </div>
+  <div class="ball"></div>
+</div>
+
+</body>
+</html>
