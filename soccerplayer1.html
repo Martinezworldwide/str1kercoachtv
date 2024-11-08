@@ -63,14 +63,14 @@
     border: 2px solid black; /* Black outline */
   }
   .arm-left {
-    transform: rotate(45deg);
+    transform-origin: right;
     left: -15px;
-    animation: armMove 0.5s alternate infinite;
+    animation: armMoveBack 0.5s alternate infinite;
   }
   .arm-right {
-    transform: rotate(-45deg);
+    transform-origin: left;
     right: -15px;
-    animation: armMove 0.5s alternate-reverse infinite;
+    animation: armMoveFront 0.5s alternate infinite;
   }
 
   /* Legs */
@@ -84,11 +84,13 @@
   }
   .leg-left {
     left: -5px;
-    animation: legMove 0.5s alternate infinite;
+    animation: legMoveBack 0.5s alternate infinite;
+    transform-origin: top;
   }
   .leg-right {
     right: -5px;
-    animation: legMove 0.5s alternate-reverse infinite;
+    animation: legMoveFront 0.5s alternate-reverse infinite;
+    transform-origin: top;
   }
 
   /* Soccer Ball */
@@ -110,14 +112,22 @@
     100% { left: 100%; }
   }
 
-  @keyframes armMove {
+  /* Adjusted arm and leg animations for 3D effect */
+  @keyframes armMoveFront {
     0% { transform: rotate(45deg); }
     100% { transform: rotate(25deg); }
   }
-
-  @keyframes legMove {
+  @keyframes armMoveBack {
+    0% { transform: rotate(-45deg); }
+    100% { transform: rotate(-25deg); }
+  }
+  @keyframes legMoveFront {
     0% { transform: rotate(20deg); }
     100% { transform: rotate(-20deg); }
+  }
+  @keyframes legMoveBack {
+    0% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
   }
 
   @keyframes ballDribble {
