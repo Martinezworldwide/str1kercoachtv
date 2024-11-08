@@ -59,17 +59,17 @@
     height: 5px;
     background-color: white; /* White arms */
     position: absolute;
-    top: 5px;
+    top: 8px;
     border: 2px solid black; /* Black outline */
   }
   .arm-left {
     transform-origin: right;
-    left: -15px;
+    left: -20px;
     animation: armMoveBack 0.5s alternate infinite;
   }
   .arm-right {
     transform-origin: left;
-    right: -15px;
+    right: -20px;
     animation: armMoveFront 0.5s alternate infinite;
   }
 
@@ -114,12 +114,12 @@
 
   /* Adjusted arm and leg animations for 3D effect */
   @keyframes armMoveFront {
-    0% { transform: rotate(45deg); }
-    100% { transform: rotate(25deg); }
+    0% { transform: rotate(30deg); }
+    100% { transform: rotate(15deg); }
   }
   @keyframes armMoveBack {
-    0% { transform: rotate(-45deg); }
-    100% { transform: rotate(-25deg); }
+    0% { transform: rotate(-30deg); }
+    100% { transform: rotate(-15deg); }
   }
   @keyframes legMoveFront {
     0% { transform: rotate(20deg); }
